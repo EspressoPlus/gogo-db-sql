@@ -1,0 +1,41 @@
+CREATE TABLE Category
+(
+  category_id INT NOT NULL,
+  recurring CHAR,
+  income CHAR NOT NULL,
+  expense CHAR NOT NULL,
+  PRIMARY KEY (category_id)
+);
+
+CREATE TABLE Transaction
+(
+  trans_id INT NOT NULL,
+  trans_title VARCHAR NOT NULL,
+  trans_description VARCHAR NOT NULL,
+  trans_date DATE NOT NULL,
+  category_id INT NOT NULL,
+  PRIMARY KEY (trans_id),
+  FOREIGN KEY (category_id) REFERENCES Category(category_id)
+);
+
+CREATE TABLE Ledger
+(
+  ledger_id INT NOT NULL,
+  created_on DATE NOT NULL,
+  amount NUMERIC NOT NULL,
+  trans_id INT NOT NULL,
+  PRIMARY KEY (ledger_id),
+  FOREIGN KEY (trans_id) REFERENCES Transaction(trans_id)
+);
+
+CREATE TABLE User
+(
+  user_id INT NOT NULL,
+  user_firstName VARCHAR NOT NULL,
+  user_lastName VARCHAR NOT NULL,
+  user_email VARCHAR NOT NULL,
+  user_password VARCHAR NOT NULL,
+  ledger_id INT NOT NULL,
+  PRIMARY KEY (user_id),
+  FOREIGN KEY (ledger_id) REFERENCES Ledger(ledger_id)
+);
