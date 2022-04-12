@@ -129,7 +129,7 @@ CREATE TABLE `user` (
   `password` varchar(250) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `start_balance` double DEFAULT NULL,
-  `amout_to_save` double DEFAULT NULL,
+  `amount_to_save` double DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
