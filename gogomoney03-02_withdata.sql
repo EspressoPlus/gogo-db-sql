@@ -55,7 +55,7 @@ CREATE TABLE `income` (
   `user_id` int DEFAULT NULL,
   `category_id` int DEFAULT NULL,
   `recurring` varchar(25) DEFAULT 'FALSE',
-  `recur_interval` varchar(25) DEFAULT NULL,
+  `recur_interval` varchar(25) NOT NULL,
   `recurr_day` int DEFAULT NULL,
   `recurr_count` int DEFAULT NULL,
   `transaction_date` date DEFAULT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE `income` (
 
 LOCK TABLES `income` WRITE;
 /*!40000 ALTER TABLE `income` DISABLE KEYS */;
-INSERT INTO `income` VALUES (1,'Pay-Check',400,1,11,'FALSE',NULL,NULL,NULL,'2022-03-01','2022-04-01'),(2,'Pay-Check',390,1,11,'FALSE',NULL,NULL,NULL,'2022-03-08','2022-04-01'),(3,'Pay-Check',440,1,11,'FALSE',NULL,NULL,NULL,'2022-03-15','2022-04-01'),(4,'Gift',20,1,11,'FALSE',NULL,NULL,NULL,'2022-03-17','2022-04-01'),(5,'Royalties',500,2,11,'FALSE',NULL,NULL,NULL,'2022-03-19','2022-04-01');
+INSERT INTO `income` VALUES (1,'Pay-Check',400,1,11,'FALSE','Once',0,0,'2022-03-01','2022-04-01'),(2,'Pay-Check',390,1,11,'FALSE','Once',0,0,'2022-03-08','2022-04-01'),(3,'Pay-Check',440,1,11,'FALSE','Once',0,0,'2022-03-15','2022-04-01'),(4,'Gift',20,1,11,'FALSE','Once',0,0,'2022-03-17','2022-04-01'),(5,'Royalties',500,2,11,'FALSE','Once',0,0,'2022-03-19','2022-04-01');
 /*!40000 ALTER TABLE `income` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `outcome` (
   `user_id` int DEFAULT NULL,
   `category_id` int DEFAULT NULL,
   `recurring` varchar(25) DEFAULT 'FALSE',
-  `recur_interval` varchar(25) DEFAULT NULL,
+  `recur_interval` varchar(25) NOT NULL,
   `recurr_day` int DEFAULT NULL,
   `recurr_count` int DEFAULT NULL,
   `transaction_date` date DEFAULT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE `outcome` (
 
 LOCK TABLES `outcome` WRITE;
 /*!40000 ALTER TABLE `outcome` DISABLE KEYS */;
-INSERT INTO `outcome` VALUES (1,'Rent',1200,1,1,'TRUE','Monthly',1,11,'2022-04-01','2022-04-01'),(2,'Netflix',20,1,8,'TRUE','Monthly',15,5,'2022-03-15','2022-04-01'),(3,'Groceries',55,1,5,'FALSE',NULL,NULL,NULL,'2022-03-28','2022-04-01'),(4,'Gas',80,2,7,'FALSE',NULL,NULL,NULL,'2022-03-17','2022-04-01'),(5,'Charitable Donation',3000,3,10,'FALSE',NULL,NULL,NULL,'2022-03-19','2022-04-01');
+INSERT INTO `outcome` VALUES (1,'Rent',1200,1,1,'TRUE','Monthly',1,11,'2022-04-01','2022-04-01'),(2,'Netflix',20,1,8,'TRUE','Monthly',15,5,'2022-03-15','2022-04-01'),(3,'Groceries',55,1,5,'FALSE','Once',0,0,'2022-03-28','2022-04-01'),(4,'Gas',80,2,7,'FALSE','Once',0,0,'2022-03-17','2022-04-01'),(5,'Charitable Donation',3000,3,10,'FALSE','Once',0,0,'2022-03-19','2022-04-01');
 /*!40000 ALTER TABLE `outcome` ENABLE KEYS */;
 UNLOCK TABLES;
 
