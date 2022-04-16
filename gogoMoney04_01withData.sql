@@ -61,8 +61,8 @@ CREATE TABLE IF NOT EXISTS `gogomoney04-01`.`user` (
   `user_last_name` VARCHAR(45) NULL DEFAULT NULL,
   `password` VARCHAR(250) NULL DEFAULT NULL,
   `email` VARCHAR(45) NULL DEFAULT NULL,
-  `start_balance` DOUBLE NULL DEFAULT NULL,
-  `amount_to_save` DOUBLE NULL DEFAULT NULL,
+  `start_balance` DOUBLE NULL NOT NULL,
+  `amount_to_save` DOUBLE NULL NOT NULL,
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 4
@@ -70,9 +70,9 @@ DEFAULT CHARACTER SET = utf8;
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES 	(1,'Henry','Mangelsdorf','washtenaw123','henry@gmail.com',0,NULL),
-							(2,'David','Bowie','labryinth44','goblinking@msn.com',0,NULL),
-                            (3,'Keanu','Reeves','billandted3','reeves@gmail.com',0,NULL);
+INSERT INTO `user` VALUES 	(1,'Henry','Mangelsdorf','washtenaw123','henry@gmail.com',15000.00,2400.00),
+							(2,'David','Bowie','labryinth44','goblinking@msn.com',2000.00,5000.00),
+                            (3,'Keanu','Reeves','billandted3','reeves@gmail.com',150.00,500.00);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
