@@ -22,35 +22,6 @@ CREATE SCHEMA IF NOT EXISTS `gogomoney04-01` DEFAULT CHARACTER SET utf8 ;
 USE `gogomoney04-01` ;
 
 -- -----------------------------------------------------
--- Table `gogomoney04-01`.`category`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `gogomoney04-01`.`category` ;
-
-CREATE TABLE IF NOT EXISTS `gogomoney04-01`.`category` (
-  `category_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `category_name` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`category_id`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 12
-DEFAULT CHARACTER SET = utf8;
-
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES 	(1,'Housing'),
-								(2,'Insurance'),
-                                (3,'Savings'),
-                                (4,'Utilities'),
-                                (5,'Essentials'),
-                                (6,'Healthcare'),
-                                (7,'Transportation'),
-                                (8,'Recreation/Entertainment'),
-                                (9,'Personal'),
-                                (10,'Other'),
-                                (11,'Income');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
-UNLOCK TABLES;
-
--- -----------------------------------------------------
 -- Table `gogomoney04-01`.`user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `gogomoney04-01`.`user` ;
@@ -88,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `gogomoney04-01`.`financial` (
   `income_outcome` VARCHAR(45) NOT NULL,
   `amount` DOUBLE NULL DEFAULT NULL,
   `user_id` INT(11) NULL DEFAULT NULL,
-  `category_id` INT(11) NULL DEFAULT NULL,
+  `category` INT(11) NULL DEFAULT NULL,
   `recurring` VARCHAR(25) NULL DEFAULT 'FALSE',
   `recur_interval` VARCHAR(25) NOT NULL,
   `recurr_day` INT(11) NULL DEFAULT NULL,
@@ -96,16 +67,12 @@ CREATE TABLE IF NOT EXISTS `gogomoney04-01`.`financial` (
   `transaction_date` DATE NULL DEFAULT NULL,
   `entry_date` DATE NULL DEFAULT NULL,
   PRIMARY KEY (`financial_id`),
-  INDEX `in_category_key_idx` (`category_id` ASC) VISIBLE,
   INDEX `in_user_key_idx` (`user_id` ASC) VISIBLE,
-  CONSTRAINT `in_category_fkey`
-    FOREIGN KEY (`category_id`)
-    REFERENCES `gogomoney04-01`.`category` (`category_id`),
   CONSTRAINT `in_user_fkey`
     FOREIGN KEY (`user_id`)
     REFERENCES `gogomoney04-01`.`user` (`user_id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 11
 DEFAULT CHARACTER SET = utf8;
 
 LOCK TABLES `financial` WRITE;
